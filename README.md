@@ -1,2 +1,2 @@
 # C projects
- projects like problem 
+ projects like problem solving
