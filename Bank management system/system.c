@@ -5,21 +5,28 @@ void deposite();
 void withdraw();
 void check();
 
+const char* reset="\033[0m";
+const char* pink="\033[1;35m";
+const char* red = "\033[1;31m";
+const char* green = "\033[1;32m";
+const char* yellow = "\033[1;33m";
+const char* blue = "\033[1;34m";
+
 int account;
 float balance;
 
 int main()
 {
-  printf("* Bank Management System *\n");
+  printf("*%s Bank Management System %s*\n", pink, reset);
   while(1){
-  printf("   1. create account\n");
-  printf("   2. deposite money\n");
-  printf("   3. withdraw money\n");
-  printf("   4. check balance\n");
-  printf("   5. exit\n\n");
+  printf("%s   1. create account%s\n", blue, reset);
+  printf("%s   2. deposite money%s\n", blue, reset);
+  printf("%s   3. withdraw money%s\n", blue, reset);
+  printf("%s   4. check balance%s\n", blue, reset);
+  printf("%s   5. exit%s\n\n", blue, reset);
   
   int choice;
-  printf("Enter your choice : ");
+  printf("%sEnter your choice : %s", yellow, reset);
   scanf("%d", &choice);
   
   switch(choice){
@@ -40,12 +47,12 @@ int main()
       break;
      
     case 5:
-      printf("exit the program !\n");
+      printf("%sexit the program !%s\n", red, reset);
       return 0;
       break;
       
     default:
-      printf("enter valid option !\n\n");
+      printf("%senter valid option !%s\n\n", red, reset);
   }
   }
   return 0;
@@ -54,12 +61,12 @@ int main()
 
 void create(){
   if(account == 0){
-  printf("Create your account number :- ");
+  printf("%sCreate your account number :- %s", yellow, reset);
   scanf("%d", &account);
-  printf("-- Account created successfully ! --\n\n");
+  printf("%s-- Account created successfully ! --%s\n\n", green, reset);
   }
   else{
-    printf("×× Account is already exist ! ××\n and your account number is %d\n\n", account);
+    printf("%s Account is already exist ! %s\n %sand your account number is %d %s\n\n",red, reset, green, account, reset);
   }
 }
 
@@ -68,27 +75,27 @@ void deposite(){
   float amt;
   int enter;
   
-  printf("enter account number : ");
+  printf("%senter account number : %s", yellow, reset);
   scanf("%d", &enter);
   
   for(int i=0;enter != account && account != 0;i++){
-    printf("pls enter correct account number :- ");
+    printf("%spls enter correct account number :- %s", red, reset);
     scanf("%d", &enter);
   }
   
   if(enter == account){
-  printf("enter amount to deposite : ");
+  printf("%senter amount to deposite : %s", yellow, reset);
   scanf("%f", &amt);
     if(amt <= 0){
-      printf("enter greater than 0, for deposite\n\n");
+      printf("%senter greater than 0, for deposite%s\n\n", red, reset);
     }
     else{
-  printf("deposite money successful !\n\n");
+  printf("%sdeposite money successful !%s\n\n", green, reset);
   balance = balance + amt;
   }
   }
   if(account == 0){
-    printf("first you'v create your account\n\n");
+    printf("%sfirst you'v create your account%s\n\n", red, reset);
   }
   
 }
@@ -98,31 +105,31 @@ void withdraw(){
   float amt;
   int enter;
   
-  printf("enter your account number : ");
+  printf("%senter your account number : %s", yellow, reset);
   scanf("%d", &enter);
     
     for(int i=0;enter != account && account != 0;i++){
-    printf("pls enter correct account number :- ");
+    printf("%spls enter correct account number :- %s", red, reset);
     scanf("%d", &enter);
   }
   
     if(enter == account){
-  printf("enter amount to withdraw : ");
+  printf("%senter amount to withdraw : %s", yellow, reset);
   scanf("%f", &amt);
     if(amt > balance){
-      printf("insufficient balance !\nyour current balance is %.2f\n\n", balance);
+      printf("%sinsufficient balance !%s\n", red, reset);
     }
     else if(amt <= 0){
-      printf("withdraw amount is always greater than 0\n");
+      printf("%swithdraw amount is always greater than 0%s\n", red, reset);
     }
     else{
-  printf("withdraw money successful !\n\n");
+  printf("%swithdraw money successful !%s\n\n", green, reset);
   balance = balance - amt;
       }
      }
   
   if(account == 0){
-    printf("first you'v create your account\n\n");
+    printf("%sfirst you'v create your account%s\n\n", red, reset);
   }
   
 }
@@ -131,19 +138,19 @@ void withdraw(){
 void check(){
   int enter;
   
-  printf("enter your account number : ");
+  printf("%senter your account number : %s", yellow, reset);
   scanf("%d", &enter);
   
   for(int i=0;enter != account && account != 0;i++){
-    printf("pls enter correct account number :- ");
+    printf("%spls enter correct account number :- %s", red, reset);
     scanf("%d", &enter);
   }
   
   if(enter == account){
-  printf("your bank balance is %.2f\n\n", balance);
+  printf("%syour bank balance is %.2f %s\n\n",green, balance, reset);
   }
   if(account == 0){
-    printf("first you'v create your account\n\n");
+    printf("%sfirst you'v create your account%s\n\n", red, reset);
   }
   
 }
