@@ -24,7 +24,7 @@ int main()
   scanf("%d", &choice);
   
   if(choice == 7){
-    printf("you're exit the operation");
+    printf("you're exit the program");
     break;
   }
   
